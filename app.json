@@ -1,0 +1,73 @@
+{
+  "name": "Salesforce1 Ignition Pack - Social News Crawler",
+  "description": "News crawler to support the Gist, Magellan and Scout applications in the Salesforce1 Ignition Pack",
+  "website": "http://www.johnbrunswick.com/salesforce1-ignition",
+  "repository": "https://github.com/JohnBrunswick/Salesforce1-Ignition-Pack-Social-News-Crawler",
+  "logo": "https://raw.githubusercontent.com/JohnBrunswick/Salesforce1-Ignition-Pack-Social-News-Crawler/master/public/img/logo.png",
+  "success_url": "http://www.johnbrunswick.com/salesforce1-ignition",
+  "keywords": [
+    "Salesforce1",
+    "Node",
+    "Postgres",
+    "Ignition",
+    "News",
+    "Salesforce Labs"
+  ],
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "env": {
+    "CLIENT_ID": {
+      "description": "Salesforce Connected App Client Id - https://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm#oauth",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "CLIENT_SECRET": {
+      "description": "Salesforce Connected App Client Secret - https://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm#oauth",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "CORS": {
+      "description": "The domain where your Visualforce Pages live (e.g. https://c.na17.visual.force.com)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    }, 
+    "DATABASE_URL": {
+      "description": "Your Heroku Postgres Database URL (e.g. postgres://xyz:xyz@ec2-xyz.compute-1.amazonaws.com:5432/xyz)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "JWT_SECRET": {
+      "description": "Security Code for Salesforce1 to Connect with this Application (automatically generated)",
+      "generator": "secret"
+    },          
+    "NEWSKEY": {
+      "description": "API Key from Faroo (http://www.faroo.com/hp/api/api.html)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "PASSWORD": {
+      "description": "Salesforce Password + Your Token (https://help.salesforce.com/HTViewHelpDoc?id=user_security_token.htm)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "PORT": {
+      "description": "Default Port for Service",
+      "value": "3001"
+    },
+    "TWITTER_ACCESS_TOKEN": {
+      "description": "Required from Twitter (https://apps.twitter.com/)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "TWITTER_CONSUMER": {
+      "description": "Required from Twitter (https://apps.twitter.com/)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "description": "Required from Twitter (https://apps.twitter.com/)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },
+    "TWITTER_TOKEN_SECRET": {
+      "description": "Required from Twitter (https://apps.twitter.com/)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    },            
+    "USERNAME": {
+      "description": "Salesforce login (e.g. mylogin@mycompany.com)",
+      "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
+    }
+  }
+}

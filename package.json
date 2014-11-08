@@ -1,0 +1,14 @@
+{
+    "name": "s1ignition"
+  , "version": "0.0.1"
+  , "engines": {
+    "node": "0.10.29",
+    "npm":  "1.1.x"
+  }
+  , "private": true
+  , "dependencies": {
+      "express": "3.*"
+    , "pg": "2.x"
+    , "sequence": "3.*"
+  }
+}

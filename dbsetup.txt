@@ -1,0 +1,27 @@
+-- Table: collector
+
+-- DROP TABLE collector;
+
+CREATE TABLE collector
+(
+  id integer NOT NULL DEFAULT nextval('"Collector_id_seq"'::regclass),
+  iconlink character varying(255),
+  title character varying(255),
+  excerpt character varying(500),
+  author character varying(100),
+  link character varying(255),
+  accountid character varying(18),
+  accountname character varying(150),
+  publisheddate date,
+  source integer,
+  setiment real,
+  twitter_retweet integer,
+  twitter_favorite integer,
+  news_vote integer,
+  CONSTRAINT "Collector_pkey" PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE collector
+  OWNER TO nljvapfxkpjnvk;
