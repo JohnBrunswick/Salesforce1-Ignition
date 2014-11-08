@@ -1,10 +1,6 @@
--- Table: collector
-
--- DROP TABLE collector;
-
 CREATE TABLE collector
 (
-  id integer NOT NULL DEFAULT nextval('"Collector_id_seq"'::regclass),
+  id SERIAL,
   iconlink character varying(255),
   title character varying(255),
   excerpt character varying(500),
@@ -23,5 +19,3 @@ CREATE TABLE collector
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE collector
-  OWNER TO nljvapfxkpjnvk;
