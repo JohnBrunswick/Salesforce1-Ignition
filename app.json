@@ -2,8 +2,8 @@
   "name": "Salesforce1 Ignition Pack",
   "description": "News crawler to support the Gist, Magellan and Scout applications in the Salesforce1 Ignition Pack",
   "website": "http://www.johnbrunswick.com/salesforce1-ignition",
-  "repository": "https://github.com/JohnBrunswick/Salesforce1-Ignition-Pack-Social-News-Crawler",
-  "logo": "https://raw.githubusercontent.com/JohnBrunswick/Salesforce1-Ignition-Pack-Social-News-Crawler/master/public/img/logo.png",
+  "repository": "https://github.com/JohnBrunswick/Salesforce1-Ignition",
+  "logo": "https://github.com/JohnBrunswick/Salesforce1-Ignition/master/public/img/logo.png",
   "success_url": "http://www.johnbrunswick.com/salesforce1-ignition",
   "keywords": [
     "Salesforce1",
