@@ -1,6 +1,6 @@
 {
   "name": "Salesforce1 Ignition Pack",
-  "description": "News crawler to support the Gist, Magellan and Scout applications in the Salesforce1 Ignition Pack",
+  "description": "News crawler to support the Gist, Magellan and Scout applications in the Salesforce1 Ignition Pack.  Full setup directions @ http://www.johnbrunswick.com/salesforce1-ignition",
   "website": "http://www.johnbrunswick.com/salesforce1-ignition",
   "repository": "https://github.com/JohnBrunswick/Salesforce1-Ignition",
   "logo": "https://raw.githubusercontent.com/JohnBrunswick/Salesforce1-Ignition/master/public/img/logo.png",
@@ -18,11 +18,11 @@
   ],
   "env": {
     "CLIENT_ID": {
-      "description": "Salesforce Connected App Client Id - https://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm#oauth",
+      "description": "Salesforce Connected App Client Id",
       "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
     },
     "CLIENT_SECRET": {
-      "description": "Salesforce Connected App Client Secret - https://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm#oauth",
+      "description": "Salesforce Connected App Client Secret",
       "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
     },
     "CORS": {
@@ -34,7 +34,7 @@
       "value": "See Setup Guide @ http://www.johnbrunswick.com/salesforce1-ignition"
     },
     "JWT_SECRET": {
-      "description": "Security Code for Salesforce1 to Connect with this Application (automatically generated)",
+      "description": "Security Code for Salesforce1 to Connect with this Application",
       "generator": "secret"
     },          
     "NEWSKEY": {
