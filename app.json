@@ -14,7 +14,8 @@
     "Salesforce Labs"
   ],
   "addons": [
-    "heroku-postgresql"
+    "heroku-postgresql",
+    "pgstudio"
   ],
   "env": {
     "CLIENT_ID": {
