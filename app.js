@@ -985,6 +985,23 @@ app.get('/api/getevents', cors(corsOptions), function(req, res, next) {
 });
 
 
+// Run on first load - create database table if needed
+pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+
+    client.query('CREATE TABLE IF NOT EXISTS collector (id SERIAL, iconlink character varying(255), title character varying(255), excerpt character varying(500), author character varying(100), link character varying(255), accountid character varying(18), accountname character varying(150), publisheddate date, source integer, setiment real, twitter_retweet integer, twitter_favorite integer, news_vote integer, CONSTRAINT "Collector_pkey" PRIMARY KEY (id) ) WITH ( OIDS=FALSE );',  function(err, result) {
+      
+      if(err) {
+        console.log('ERROR : table not created, could not connect to database (make sure to configure your Heroku environment variables) or table may exist : ' + err);
+        done();
+      }
+      else {
+        console.log('SUCCESS : table created for S1 Ignition');
+        done();
+      }
+
+  });
+});
+
 
 if(!module.parent){
   app.listen(port, function(){
