@@ -398,42 +398,49 @@ app.get('/token', cors(corsOptions), function(req, res) {
  var getTwitterContent = function(handle, nextTweet)
  {
 
-  twitterSearchHandle = '@' + handle.twittername;
+  if (handle.twittername != null)
+  {
 
-  T.get('search/tweets', { q: twitterSearchHandle, count: twitterCount, lang: 'en' }, function(err, data, response) {
+    twitterSearchHandle = '@' + handle.twittername;
 
-    var datarespTwitter = new Array();
+    T.get('search/tweets', { q: twitterSearchHandle, count: twitterCount, lang: 'en' }, function(err, data, response) {
 
-    if(data) {
-      feed = data.statuses;
-      // console.log(feed);
+      var datarespTwitter = new Array();
 
-      for(var tweet in feed) {
-        tweetdata = new Array();
-        tweetdata.title = feed[tweet].text;
-        tweetdata.author = feed[tweet].user.screen_name;
-        tweetdata.iconlink = '';
-        tweetdata.excerpt = '';
-        tweetdata.url = feed[tweet].id_str;
-        tweetdata.accountname = handle.accountname;
-        tweetdata.accountid = handle.accountid;
-        tweetdata.type = '1';
-        tweetdata.setiment = analyze(feed[tweet].text).score;
-        var d = new Date(feed[tweet].created_at);
-        tweetdata.publisheddate = d.toISOString();
-        tweetdata.twitter_retweet = feed[tweet].retweet_count;
-        tweetdata.twitter_favorite = feed[tweet].favorite_count
-        datarespTwitter.push(tweetdata);
+      if(data) {
+        feed = data.statuses;
+        // console.log(feed);
+
+        for(var tweet in feed) {
+          tweetdata = new Array();
+          tweetdata.title = feed[tweet].text;
+          tweetdata.author = feed[tweet].user.screen_name;
+          tweetdata.iconlink = '';
+          tweetdata.excerpt = '';
+          tweetdata.url = feed[tweet].id_str;
+          tweetdata.accountname = handle.accountname;
+          tweetdata.accountid = handle.accountid;
+          tweetdata.type = '1';
+          tweetdata.setiment = analyze(feed[tweet].text).score;
+          var d = new Date(feed[tweet].created_at);
+          tweetdata.publisheddate = d.toISOString();
+          tweetdata.twitter_retweet = feed[tweet].retweet_count;
+          tweetdata.twitter_favorite = feed[tweet].favorite_count
+          datarespTwitter.push(tweetdata);
+        }
       }
-    }
 
-    // Commit to DB
-    async.forEachLimit(datarespTwitter, 1, addCollection, function(err){
-       if (err) throw err;
-       console.log('+++ Done all tweets processed for ' + handle.accountname);
-    });
+      // Commit to DB
+      async.forEachLimit(datarespTwitter, 1, addCollection, function(err){
+         if (err) throw err;
+         console.log('+++ Done all tweets processed for ' + handle.accountname);
+      });
 
-  })
+    })
+  }
+  else {
+    console.log('skipping - Twitter account name not set in Account record...');
+  }
 
   // Pace to stay within the Twitter API limits of 15 calls with 15 min
   setTimeout(function() { nextTweet(); }, twitterWaitTime);
