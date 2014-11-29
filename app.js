@@ -808,8 +808,7 @@ var getNewsArticles = function(accountCollection, nextRequestApi) {
 }
 
 
-app.options('/api/intakenews', cors(corsOptions));
-app.get('/api/intakenews', cors(corsOptions), function (req, res) {
+var crawlNews = function() {
 
     var accountCollection = new Array();
     var accountCollectionTwitter = new Array();
@@ -899,7 +898,12 @@ app.get('/api/intakenews', cors(corsOptions), function (req, res) {
             });
     }
   );
+}
 
+
+app.options('/api/intakenews', cors(corsOptions));
+app.get('/api/intakenews', cors(corsOptions), function (req, res) {
+  crawlNews();
   res.json({ msg: 'ok' })
   res.end();  
 });
@@ -911,13 +915,8 @@ app.get('/api/getevents', cors(corsOptions), function(req, res, next) {
   var accounts = '';
 
   if (req.query.accounts) {
-//    if (typeof req.query.accounts === 'object')
-//    {
-      // Flatten the array
-      //accounts = accountArray.join("','");
 
       accountstring = req.query.accounts;
-
       accounts = accountstring.split(',');
 
       // Scrub array contents
@@ -925,12 +924,6 @@ app.get('/api/getevents', cors(corsOptions), function(req, res, next) {
 
       // Flatten the array
       accounts = accounts.join("','");
-      
-//    }
-//    else
-//    {
-//      accounts = scrubValue(req.query.accounts);
-//    }
   }
   
   // Filters
@@ -995,11 +988,21 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done) {
         done();
       }
       else {
-        console.log('SUCCESS : table created for S1 Ignition');
+        console.log('SUCCESS : created or exists for S1 Ignition');
         done();
       }
 
   });
+});
+
+
+// Crawl news on a scheduled basis per the hour rule below
+var schedule = require('node-schedule');
+var rule = new schedule.RecurrenceRule();
+rule.hour = 12;
+
+var j = schedule.scheduleJob(rule, function(){
+    crawlNews();
 });
 
 
