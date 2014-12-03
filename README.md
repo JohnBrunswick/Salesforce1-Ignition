@@ -7,6 +7,7 @@ https://www.youtube.com/watch?v=B58-gasz8Fk
 ####Step-by-Step Configuration and Additional Details
 http://www.johnbrunswick.com/salesforce1-ignition
 
+One click Heroku deploy (check above link for details of how to setup after install)
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ##Technical Overview of Node App and Services
